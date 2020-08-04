@@ -28,11 +28,26 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('invalid command')
 
-@client.command(aliases=['8ball'])
-async def _8ball(ctx, *, question):
-    responses = ['yes',
-                'Nope']
-    await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
+@client.command(aliases=['kerang', 'ka', 'k'])
+async def kerang_ajaib(ctx, *, question):
+    mancing_mania = [
+        'mancing mania',
+        'mancing mania?',
+        'Mancing mania',
+        'Mancing mania?',
+        'MANCING MANIA',
+        'MANCING MANIA?'
+    ]
+    responses = [ "It is certain", "It is decidedly so", "Without a doubt", "Yes, definitely",
+               "You may rely on it", "As I see it, yes", "Most Likely", "Outlook Good",
+               "Yes", "Signs point to yes", "Reply hazy, try again", "Ask again later",
+               "Better not tell you now", "Cannot predict now", "Concentrate and ask again",
+               "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very Doubtful"]
+
+    if question in mancing_mania:
+        await ctx.send('MANTAP')
+    else:
+        await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 
 #load all cogs
