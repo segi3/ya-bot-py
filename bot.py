@@ -1,11 +1,16 @@
 import random
 import discord
 import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 from discord.ext import commands, tasks
 from itertools import cycle
 
 client = commands.Bot(command_prefix = '.')
-status = cycle(['status 1', 'status 2'])
+
+# * get env var
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 # on_ready event
 @client.event
@@ -35,4 +40,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('NzM5MzcwNDA2NjUzMTk4Mzk3.XyZeWQ.CJvBwdxtO0nNoRfO7GGoUyUcGxs')
+client.run(os.environ.get("TOKEN"))
