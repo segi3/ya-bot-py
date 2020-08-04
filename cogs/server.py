@@ -25,22 +25,23 @@ class Server(commands.Cog):
     # ping command
     @commands.command()
     async def ping(self, ctx):
+        """ => PONG """
         await ctx.send(f'Pong! [{round(self.client.latency * 1000)}ms]')
 
     # kick command
-    @commands.command()
+    @commands.command(hidden=True)
     async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
         await ctx.send(f'kicked {member.name}#{member.discriminator}')
 
     # ban command
-    @commands.command()
+    @commands.command(hidden=True)
     async def ban(self, ctx, member : discord.Member, *, reason=None):
         await member.ban(reason=reason)
         await ctx.send(f'Banned {member.name}#{member.discriminator}')
 
     # unban command
-    @commands.command()
+    @commands.command(hidden=True)
     async def unban(self, ctx, *, member):
         banned_users = await ctx.guild.bans()
         member_name, member_discriminator = member.split('#')
