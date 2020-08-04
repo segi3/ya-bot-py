@@ -13,12 +13,9 @@ async def on_ready():
     # change_status.start()
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Dota 2'))
     print('Bot is ready!')
-<<<<<<< HEAD
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
-=======
->>>>>>> b881099af1174e7fadc40a9c627381f6c4119eda
 
 # error event
 @client.event

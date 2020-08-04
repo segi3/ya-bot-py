@@ -1,8 +1,5 @@
 import discord
-<<<<<<< HEAD
 import re
-=======
->>>>>>> b881099af1174e7fadc40a9c627381f6c4119eda
 from discord.ext import commands
 
 class Chatroom(commands.Cog):
@@ -11,7 +8,6 @@ class Chatroom(commands.Cog):
         self.client = client
     
     # ---------- events ----------
-<<<<<<< HEAD
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author == self.client.user:
@@ -51,8 +47,6 @@ class Chatroom(commands.Cog):
         else:
             print('bukan ay AY')
 
-=======
->>>>>>> b881099af1174e7fadc40a9c627381f6c4119eda
 
     # ---------- commands ----------
 
