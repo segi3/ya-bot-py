@@ -8,6 +8,13 @@ class Kerang(commands.Cog, name="puja kerang ajaib"):
         self.client = client
     
     # ---------- commands ----------
+
+    @commands.command(hidden=True)
+    async def test(self, ctx, *, question):
+        answer = "answer"
+        embed = discord.Embed(title=question, description=answer, color=0xb63b24)
+        await ctx.send(embed=embed)
+
     @commands.command(brief="=> tanya kerang ajaib", description="tanya kerang ajaib", aliases=['k'])
     async def kerang(self, ctx, *, question):
         mancing_mania = [
@@ -43,7 +50,9 @@ class Kerang(commands.Cog, name="puja kerang ajaib"):
         if question in mancing_mania:
             await ctx.send('MANTAP')
         else:
-            await ctx.send(f'`{question}`\n{random.choice(responses)}')
+            embed = discord.Embed(title=question, description=random.choice(responses), color=0xb63b24)
+            await ctx.send(embed=embed)
+            # await ctx.send(f'`{question}`\n{random.choice(responses)}')
 
     @kerang.error
     async def kerang_error(self, ctx, error):

@@ -30,8 +30,7 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         return await ctx.send('ngawur gak ada command kek gitu')
 
-#load all cogs
-# client.load_extension(f'cogs.help')
+# load all cogs
 for filename in os.listdir('./cogs'):
     if filename == 'music.py':
         print("music will not be loaded")
