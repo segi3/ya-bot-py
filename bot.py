@@ -36,7 +36,7 @@ for filename in os.listdir('./cogs'):
         print("music will not be loaded")
         continue
     elif filename == 'help.py':
-        print("using default command") #default command is in server cog
+        print("using default help command") #default command is in server cog
         continue
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
