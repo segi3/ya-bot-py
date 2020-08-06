@@ -46,12 +46,21 @@ class Chatroom(commands.Cog):
             
             print(f'{msg_out}')
             await message.channel.send(f'{msg_out}')
-
+        elif "segitiga" in message.content:
+            emoji = '\U0001F53A'
+            # or '\U0001f44d' or '👍'
+            await message.add_reaction(emoji)
         else:
             print('bukan ay AY')
 
 
     # ---------- commands ----------
+
+    @commands.command(hidden=True)
+    async def reply(self, ctx, *, message):
+        print(f'command reply, msg:{message}')
+        channel = self.client.get_channel(361494244919083021)
+        await channel.send(f'{message}')
 
     # clear messages command
     @commands.command(hidden=True)
