@@ -8,7 +8,7 @@ from itertools import cycle
 client = commands.Bot(command_prefix = '.')
 
 # ! comment to use custom help command
-# client.remove_command('help')
+client.remove_command('help')
 
 # * get env var
 dotenv_path = join(dirname(__file__), '.env')
@@ -29,6 +29,21 @@ async def on_ready():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         return await ctx.send('ngawur gak ada command kek gitu')
+
+@client.command()
+async def help(ctx):
+    embed = discord.Embed(title="List command bot:", description="semua command pake prefix '.' <= (titik)", color=0xb63b24)
+    embed.add_field(name=".[build]", value="liat source code bot", inline=False)
+    embed.add_field(name=".[ping]", value="nge ping host bot", inline=False)
+    embed.add_field(name=".[kerang | k] <pertanyaan>", value="nanya kerang ajaib", inline=False)
+    embed.add_field(name=".[flip]", value="lembar koin", inline=False)
+    embed.add_field(name=".[roll] <low, default=0> <high, default=100>", value="roll dadu", inline=False)
+    # embed.set_footer(name="dah gitu aja")
+    await ctx.send(embed=embed)
+
+@client.command()
+async def build(ctx):
+    await ctx.send(f"```author: rafi\nrepo: https://github.com/segi3/ya-bot-py```")
 
 # load all cogs
 for filename in os.listdir('./cogs'):
