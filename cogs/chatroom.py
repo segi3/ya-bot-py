@@ -1,6 +1,7 @@
 import discord
 import re
 from discord.ext import commands
+import asyncio
 
 class Chatroom(commands.Cog):
     """
@@ -9,6 +10,7 @@ class Chatroom(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+
     
     # ---------- events ----------
     @commands.Cog.listener()
@@ -50,6 +52,21 @@ class Chatroom(commands.Cog):
             emoji = '\U0001F53A'
             # or '\U0001f44d' or '👍'
             await message.add_reaction(emoji)
+        elif "-p" in message.content:
+            channels = message.guild.text_channels
+            music_ch = discord.utils.get(message.guild.text_channels, name="music-command")
+            if message.channel != music_ch:
+                warning_msg = await message.channel.send(f"puter music di {music_ch.mention}, deleting in 3secs")
+                await asyncio.sleep(3)
+                await message.delete()
+                await warning_msg.delete()
+            # for channel in channels:
+            #     if channel.name != "test_channel":
+            #         print("haromm")
+            #     else:
+            #         continue
+            #     print(channel.name)
+           
         else:
             print('bukan ay AY')
 
@@ -67,6 +84,32 @@ class Chatroom(commands.Cog):
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=2):
         await ctx.channel.purge(limit=amount+1)
+    
+    # get channel
+    @commands.command(hidden=True)
+    async def where(self, ctx):
+        message = f'You are in {ctx.message.guild.name} in the {ctx.message.channel.mention} channel with an invite link of '
+        await ctx.send(message)
+        # await ctx.message.author.send(message) # dm yang manggil command
+
+    # get all channel list
+    @commands.command(hidden=True, aliases=['lc'])
+    async def list_channel(self, ctx):
+        for guild in self.client.guilds:
+            print(guild.name)
+            if guild == ctx.message.guild:
+
+                message = 'text channels:\n'
+                embed = discord.Embed(title="Text channel:", description="", color=0xb63b24)
+                for channel in guild.text_channels:
+                    message += f'{channel.mention} - {channel.topic}\n'
+                    embed.add_field(name=f"{channel.name}", value=f"{channel.mention} - {channel.topic}", inline=False)
+                    print(channel.name)
+                
+                await ctx.send(message)
+                await ctx.send(embed=embed)
+            else:
+                continue
 
     # ---------- error handling ----------
 
