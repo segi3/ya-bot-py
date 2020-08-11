@@ -47,7 +47,7 @@ class Kerang(commands.Cog, name="puja kerang ajaib"):
 
         positive_responses = [
             "pastinya",
-            "udah pasi gitu",
+            "udah pasti gitu",
             "udah darisananya juga gitu",
             "iyala, jelas",
             "yang aku liat sih iya",
