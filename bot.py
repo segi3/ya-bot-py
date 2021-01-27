@@ -18,7 +18,7 @@ load_dotenv(dotenv_path)
 @client.event
 async def on_ready():
     # change_status.start()
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('Dota 2'))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('Among Us as Impostor'))
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)

@@ -53,13 +53,15 @@ class Chatroom(commands.Cog):
             # or '\U0001f44d' or '👍'
             await message.add_reaction(emoji)
         elif "-p" in message.content:
-            channels = message.guild.text_channels
-            music_ch = discord.utils.get(message.guild.text_channels, name="music-command")
-            if message.channel != music_ch:
-                warning_msg = await message.channel.send(f"puter music di {music_ch.mention}, deleting in 3secs")
-                await asyncio.sleep(3)
-                await message.delete()
-                await warning_msg.delete()
+            music_ch = discord.utils.get(message.guild.text_channels, name="🎵music-command")
+            # music_ch = self.client.get_channel(361494244919083021)
+
+            # if message.channel != music_ch:
+            #     warning_msg = await message.channel.send(f"puter music di {music_ch.mention}, deleting in 3secs")
+            #     await asyncio.sleep(3)
+            #     await message.delete()
+            #     await warning_msg.delete()
+            
             # for channel in channels:
             #     if channel.name != "test_channel":
             #         print("haromm")
@@ -75,8 +77,13 @@ class Chatroom(commands.Cog):
 
     @commands.command(hidden=True)
     async def reply(self, ctx, *, message):
+        channel = self.client.get_channel(762984237434535936)
+        await channel.send(f'{message}')
+
+    @commands.command(hidden=True)
+    async def ms(self, ctx, *, message):
         print(f'command reply, msg:{message}')
-        channel = self.client.get_channel(361494244919083021)
+        channel = self.client.get_channel(696017083154038784)
         await channel.send(f'{message}')
 
     # clear messages command
@@ -88,7 +95,7 @@ class Chatroom(commands.Cog):
     # get channel
     @commands.command(hidden=True)
     async def where(self, ctx):
-        message = f'You are in {ctx.message.guild.name} in the {ctx.message.channel.mention} channel with an invite link of '
+        message = f'You are in {ctx.message.guild.name} in the {ctx.message.channel.mention}'
         await ctx.send(message)
         # await ctx.message.author.send(message) # dm yang manggil command
 

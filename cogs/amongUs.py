@@ -56,4 +56,4 @@ class amongUs(commands.Cog):
         
 
 def setup(client):
-    client.add_cog(amongUs(client));
+    client.add_cog(amongUs(client))

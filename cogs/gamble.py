@@ -11,13 +11,13 @@ class Gamble(commands.Cog):
     async def flip(self, ctx):
         coin = ['Burung', 'Angka']
         author = ctx.message.author
-        message = f'{author.mention} flipped [{random.choice(coin)}]'
+        message = f'{author.mention} flipped `{random.choice(coin)}`'
         await ctx.send(message)
     
     @commands.command()
-    async def roll(self, ctx, low_= 0, high_ = 100):
+    async def roll(self, ctx, high_ = 100, low_= 0):
         author = ctx.message.author
-        message = f'{author.mention} rolled [{random.randint(low_, high_)}]'
+        message = f'{author.mention} rolled [{high_}-{low_}]: `{random.randint(low_, high_)}`'
         await ctx.send(message)
 
 
